@@ -1,3 +1,4 @@
+import csv
 
 eq = {
     "Bow": 1,
@@ -29,7 +30,7 @@ def add_to_inventory(inventory, added_items):
 add_to_inventory(eq, ["Short Sword", "Hero Cloak", "Shield", "Shield"])
 
 
-display_inventory(eq)
+#display_inventory(eq)
 
 # add_to_inventory(eq, ["taczki"])
 
@@ -63,3 +64,26 @@ def print_table(inventory, order):
     print("=========================")
 
 print_table(eq, count_asc)
+
+
+
+
+
+# def import_inventory():
+#     with open('E:\Dev\Python\\2nd weekend\Homework2\game_inventory\csv\import_inventory.csv', 'r') as importing:
+#         csv_dict_reader = csv.DictReader(importing)
+    
+#         for row in csv_dict_reader:
+#             print(row)
+
+# import_inventory()
+
+# path = "E:\Dev\Python\second weekend\Homework2\game_inventory\csv\import_inventory.csv"
+# file = open(path, newline='')
+# reader = csv.reader(file)
+
+# header = next(reader)
+# data = []
+
+# for row in reader:
+    
