@@ -63,24 +63,24 @@ def print_table(inventory, order):
 
 
 
-file = 'E:/Dev/Python/second weekend/Homework2/game_inventory/import_inventory.csv'
+import_file = 'E:/Dev/Python/second weekend/Homework2/game_inventory/import_inventory.csv'
 
 def import_inventory(inventory, filename):
     with open(filename) as fp:
         imported_items = []
         for line in fp.readlines():
             new_item = ''
-            for word in line:
+            for letter in line:
                 
-                if word == ',':
+                if letter == ',':
                     imported_items.append(new_item)
                     new_item = ''
                 else:
-                    new_item += word
+                    new_item += letter
         
         add_to_inventory(inventory, imported_items)
 
-import_inventory(eq, file)
+import_inventory(eq, import_file)
 
 
 # ZMIENNE DO SORTOWANIA EQ
@@ -91,4 +91,17 @@ count_desc = sorted(eq.items(), key=lambda x: x[1])
 
 ##########################
 
+print_table(eq, empty)
+
+
+export_file = 'E:/Dev/Python/second weekend/Homework2/game_inventory/export_inventory.csv'
+
+def export_inventory(inventory, filename):
+    with open(filename, 'w') as export:
+        for key, value in inventory.items():
+            export.write((key + ',')*value)
+            
+
+export_inventory(eq, export_file)
+#import_inventory(eq, export_file)
 print_table(eq, empty)
