@@ -1,4 +1,3 @@
-import csv
 
 eq = {
     "Bow": 1,
@@ -51,39 +50,45 @@ remove_from_inventory(eq, ["Sandwich", "Cool Hat", "Sandwich"])
 
 # # display_inventory(eq)
 
-empty = eq.items()
-count_asc = sorted(eq.items(), key=lambda x: x[1], reverse=True)
-count_desc = sorted(eq.items(), key=lambda x: x[1])
+
 
 def print_table(inventory, order):
     print("=========================\n   ITEM NAME  |  COUNT\n=========================")
-    # sort_orders = sorted(inventory.items(), key=lambda x: x[1], reverse=True)
-
+    
     for i in order:
 	    print(i[0].rjust(12)," : ", i[1])
     print("=========================")
 
-print_table(eq, count_asc)
+#print_table(eq, count_asc)
 
 
 
+file = 'E:/Dev/Python/second weekend/Homework2/game_inventory/import_inventory.csv'
+
+def import_inventory(inventory, filename):
+    with open(filename) as fp:
+        imported_items = []
+        for line in fp.readlines():
+            new_item = ''
+            for word in line:
+                
+                if word == ',':
+                    imported_items.append(new_item)
+                    new_item = ''
+                else:
+                    new_item += word
+        
+        add_to_inventory(inventory, imported_items)
+
+import_inventory(eq, file)
 
 
-# def import_inventory():
-#     with open('E:\Dev\Python\\2nd weekend\Homework2\game_inventory\csv\import_inventory.csv', 'r') as importing:
-#         csv_dict_reader = csv.DictReader(importing)
-    
-#         for row in csv_dict_reader:
-#             print(row)
+# ZMIENNE DO SORTOWANIA EQ
 
-# import_inventory()
+empty = eq.items()
+count_asc = sorted(eq.items(), key=lambda x: x[1], reverse=True)
+count_desc = sorted(eq.items(), key=lambda x: x[1])
 
-# path = "E:\Dev\Python\second weekend\Homework2\game_inventory\csv\import_inventory.csv"
-# file = open(path, newline='')
-# reader = csv.reader(file)
+##########################
 
-# header = next(reader)
-# data = []
-
-# for row in reader:
-    
+print_table(eq, empty)
